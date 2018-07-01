@@ -1,0 +1,61 @@
+<!-- if / elif / else -->
+{% if cond %}
+    <h1> Condition 1 : {{cond}}</h1>
+{% elif cond_2 %}
+    <h1> Condition 2 : {{cond_2}}</h1>
+{% else %}
+    <h1> Condition other : {{cond_3}}</h1>
+{% endif %}
+
+
+<!-- and / or -->
+{% if cond and clause %}
+<h1> Cond and Clause : {{cond}} And {{clause}}</h1>
+{% endif %}
+
+
+<!-- foreach -->
+<ul>
+    {% for item in items %}
+    <li> {{item.num}} </li>
+    {% endfor %}
+</ul>
+
+
+<!-- foreach reverse -->
+<ul>
+    {% for item in items reversed %}
+    <li> {{item.num}} </li>
+    {% endfor %}
+</ul>
+
+
+<!-- if equal -->
+{% ifequal cond '1' %}
+<h2> {{cond}} </h2>
+{% endifequal %}
+
+{% ifequal cond clause %}
+<h2> Cond == clause </h2>
+{% endifequal %}
+
+
+<hr/>
+
+<h2> Filters : </h2>
+{# Comments #}
+
+<p>
+   Lower case for {{cond}} ==> {{ cond | lower }}
+</p>
+
+<p>
+    First item ==> {{ items|first }}
+</p>
+
+<p>
+    Include : <br/>
+
+    {% include "hello.html" %}
+
+</p>
