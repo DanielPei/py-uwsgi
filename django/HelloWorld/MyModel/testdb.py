@@ -1,9 +1,15 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 # Created by xiaoqiang.pei on 2018/7/1
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 from models import Test
 from django.http import HttpResponse
+from django.shortcuts import render_to_response, render
+from django.views.decorators import csrf
 
 
 # 数据库操作
@@ -41,3 +47,31 @@ def show(request):
         response1 += var.name + " "
     response = response1
     return HttpResponse("<p>" + response + "</p>")
+
+
+def get_form(request):
+    return render_to_response('search_form.html')
+
+
+def search_post(request):
+    request.encoding = 'utf-8'
+    ctx = {}
+    if request.POST:
+        ctx['rlt'] = request.POST['q']
+    return render(request, "post_form.html", ctx)
+
+
+# 接收请求数据
+def get_req(request):
+    request.encoding = 'utf-8'
+    if 'q' in request.GET:
+        message = '你搜索的内容为 [Get]: ' + request.GET['q']
+    else:
+        message = '你提交了空表单'
+    return HttpResponse(message)
+
+
+if __name__ == '__main__':
+    str = "django.server"
+    str = str.decode('utf-8')
+    print str

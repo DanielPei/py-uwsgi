@@ -15,7 +15,10 @@ Including another URLconf
 """
 # -*- coding: utf-8 -*-
 import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 import os
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(BASE_DIR)
 
@@ -25,6 +28,8 @@ from django.contrib import admin
 from . import view
 from MyModel import testdb
 
+
+# it's wired, if we set the two form request with the same url prefix, only one will work, the other will refer to the first one.
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', view.hello),
@@ -32,4 +37,8 @@ urlpatterns = [
     url(r'^extend', view.extend_html),
     url(r'^testdb', testdb.testdb),
     url(r'^show', testdb.show),
+    url(r'^search_view', testdb.get_form),
+    url(r'^search', testdb.get_req),
+    url(r'^pp', testdb.search_post),
+
 ]

@@ -2,6 +2,10 @@
 # -*- coding:utf-8 -*-
 # Created by xiaoqiang.pei on 2018/6/30
 
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+
 # from django.http import HttpResponse
 from django.shortcuts import render
 
