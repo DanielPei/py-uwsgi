@@ -99,3 +99,16 @@ python manage.py migrate TestModel   # 创建表结构
 ```
 
 
+python manage.py createsuperuser
+
+
+
+## uwsgi django
+
+uwsgi uwsgi-8000.ini
+
+kill process : kill -9 $(cat uwsgi.pid )
+
+### error
+- invalid request block size: 21573 (max 4096)...skip
+    - usgi参数-s表示以socket方式提供通信端口，默认的协议是tcp.通过浏览器访问使用的协议是http.
